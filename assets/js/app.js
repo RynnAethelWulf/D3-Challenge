@@ -1,5 +1,17 @@
 // Set width 
+function Refresh_btext() {
+    xText.attr(
+        "transform",
+        "translate(" +
+        ((width - labelArea) / 2 + labelArea) +
+        ", " +
+        (height - margin - tPadBot) +
+        ")"
+    );
+}
+
 let width = parseInt(d3.select("#scatter").style("width"));
+// let width_1 = parseInt(d3.select("#scatter1").style("width"));
 // Set height 
 let height = width - width / 3.9;
 // Margin s
@@ -33,20 +45,8 @@ crSize();
 svg.append("g").attr("class", "xText");
 // xText will allows us to select the group without excess code.
 let xText = d3.select(".xText");
-// We give xText a transform property that places it at the bottom of the chart.
-// By nesting this attribute in a function, we can easily change the location of the label group
-// whenever the width of the window changes.
-// Refreshing the text as clicked
-function Refresh_btext() {
-    xText.attr(
-        "transform",
-        "translate(" +
-        ((width - labelArea) / 2 + labelArea) +
-        ", " +
-        (height - margin - tPadBot) +
-        ")"
-    );
-}
+
+
 Refresh_btext();
 
 // Now we use xText to append three text SVG files, with y coordinates specified to space out the values.
